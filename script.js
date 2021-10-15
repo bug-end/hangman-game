@@ -13,25 +13,32 @@ submit.addEventListener('click', function() {
 	// funkcja stwarzająca miejsca na litery
 	function createLetterSpace() {
 		for (let i=0; i < puzzle.length; i++) {
-			let span = document.createElement('span');
-			span.className = 'note';
-			// span.innerHTML = '_';
-			
-			document.querySelector('.answer_box').appendChild(span);
+			let createSpan = document.createElement('span');
+			createSpan.className = 'letter_block';
+			document.querySelector('.answer_box').appendChild(createSpan);
 		}
 	}
 	createLetterSpace()
 
 	letters.addEventListener('click', event => {
 		if (!event.target.closest('button')) return // zapobiega wyświetlaniu wszystkich liter po kliknięciu w div letter
+		event.target.disabled = true;
 		const letter = event.target.textContent;
+		let svgElement = document.querySelector('.display_off');
 		
 		for (let i=0; i < arrayOfLetters.length; i++) {
 			if (arrayOfLetters[i] === letter) {
-				return console.log(true);
-
+				const spanElement = answer.querySelector('.letter_block');
+				spanElement.innerHTML = letter;
+				return console.log(true, letter);
 			}
-		}
+		};
+
+		for (let i=0; i < arrayOfLetters.length; i++) {
+			if (arrayOfLetters[i] !== letter && svgElement !== null) {
+				svgElement.classList.remove('display_off');
+			} return
+		};
 		
 	})
 

@@ -20,16 +20,17 @@ body {
 .answer_box {
 	display: flex;
 	justify-content: center;
-	/*height: 2rem;*/
-	/*min-width: 15rem;*/
-	background-color: coral;
 }
 
-.answer_box span {
+.letter_block {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	background-color: coral;
 	margin-left: 5px;
 	margin-right: 5px;
 	height: 2rem;
-	width: 1rem;
+	min-width: 1rem;
 	border-bottom: 2px solid #000;
 }
 
@@ -42,6 +43,10 @@ body {
 	background-color: aqua;
 }
 
-[data-type="svg_element"] {
+/*[data-type="svg_element"] {
+	display: none;
+}*/
+
+.display_off {
 	display: none;
 }
