@@ -10,69 +10,28 @@
 <body>
 	<div class="container">
 
-		<h1>Hangman</h1>
-
-		<input type="text" id="word" name="word" placeholder="type in your word">
-		<input type="submit" id="submit_button" value="Submit">
-
-		<div class="gallows">
-			<svg height="300" width="300">
-  				<line class="base" x1="0" y1="290" x2="100" y2="290" stroke="#000" stroke-width="8" />
-  				<line class="vertical_rod" x1="50" y1="40" x2="50" y2="290" stroke="#000" stroke-width="5" />
-  				<line class="horizontal_rod" x1="30" y1="40" x2="200" y2="40" stroke="#000" stroke-width="5" />
-  				<circle data-type="svg_element" class="head display_off" cx="170" cy="120" r="25" stroke="black" stroke-width="3" fill="none" />
-  				<line data-type="svg_element" class="core display_off" x1="170" y1="145" x2="170" y2="210" stroke="#000" stroke-width="3" />
-  				<line data-type="svg_element" class="leg_right display_off" x1="170" y1="210" x2="180" y2="265" stroke="#000" stroke-width="3" />
-  				<line data-type="svg_element" class="leg_left display_off" x1="170" y1="210" x2="160" y2="265" stroke="#000" stroke-width="3" />
-  				<line data-type="svg_element" class="arm_right display_off" x1="170" y1="160" x2="185" y2="215" stroke="#000" stroke-width="3" />
-  				<line data-type="svg_element" class="arm_left display_off" x1="170" y1="160" x2="155" y2="215" stroke="#000" stroke-width="3" />
-  				<line data-type="svg_element" class="rope display_off" x1="170" y1="40" x2="170" y2="95" stroke="#000" stroke-width="3" />
-			</svg>
+		<div id="input_box">
+			<input type="text" id="word" name="word" placeholder="type in your word">
+			<input type="submit" id="submit_button" value="Submit">
 		</div>
-
-		<div class="answer_box">
-			
+		<div id="answer_box"></div>
+		<div class="row">
+			<div class="gallows">
+				<svg height="300" width="300">
+	  				<line class="base" x1="0" y1="290" x2="100" y2="290" stroke="#000" stroke-width="8" />
+	  				<line class="vertical_rod" x1="50" y1="40" x2="50" y2="290" stroke="#000" stroke-width="5" />
+	  				<line class="horizontal_rod" x1="30" y1="40" x2="200" y2="40" stroke="#000" stroke-width="5" />
+	  				<circle data-type="svg_element" class="head display" cx="170" cy="120" r="25" stroke="black" stroke-width="3" fill="none" />
+	  				<line data-type="svg_element" class="core display" x1="170" y1="145" x2="170" y2="210" stroke="#000" stroke-width="3" />
+	  				<line data-type="svg_element" class="leg_right display" x1="170" y1="210" x2="180" y2="265" stroke="#000" stroke-width="3" />
+	  				<line data-type="svg_element" class="leg_left display" x1="170" y1="210" x2="160" y2="265" stroke="#000" stroke-width="3" />
+	  				<line data-type="svg_element" class="arm_right display" x1="170" y1="160" x2="185" y2="215" stroke="#000" stroke-width="3" />
+	  				<line data-type="svg_element" class="arm_left display" x1="170" y1="160" x2="155" y2="215" stroke="#000" stroke-width="3" />
+	  				<line data-type="svg_element" class="rope display" x1="170" y1="40" x2="170" y2="95" stroke="#000" stroke-width="3" />
+				</svg>
+			</div>
+			<div id="letter_box"></div>
 		</div>
-
-		<div class="letters">
-			<button class="letters__item">a</button>
-			<button class="letters__item">ą</button>
-			<button class="letters__item">b</button>
-			<button class="letters__item">c</button>
-			<button class="letters__item">ć</button>
-			<button class="letters__item">d</button>
-			<button class="letters__item">e</button>
-			<button class="letters__item">ę</button>
-			<button class="letters__item">f</button>
-			<button class="letters__item">g</button>
-			<button class="letters__item">h</button>
-			<button class="letters__item">i</button>
-			<button class="letters__item">j</button>
-			<button class="letters__item">k</button>
-			<button class="letters__item">l</button>
-			<button class="letters__item">ł</button>
-			<button class="letters__item">m</button>
-			<button class="letters__item">n</button>
-			<button class="letters__item">ń</button>
-			<button class="letters__item">o</button>
-			<button class="letters__item">ó</button>
-			<button class="letters__item">p</button>
-			<button class="letters__item">q</button>
-			<button class="letters__item">r</button>
-			<button class="letters__item">s</button>
-			<button class="letters__item">ś</button>
-			<button class="letters__item">t</button>
-			<button class="letters__item">u</button>
-			<button class="letters__item">v</button>
-			<button class="letters__item">w</button>
-			<button class="letters__item">x</button>
-			<button class="letters__item">y</button>
-			<button class="letters__item">z</button>
-			<button class="letters__item">ż</button>
-			<button class="letters__item">ź</button>
-		</div>
-
-		<button class="reset_button">reset</button>
 
 	</div>
 
