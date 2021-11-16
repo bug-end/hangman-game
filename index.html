@@ -5,32 +5,58 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Hangman</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@1&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<div class="container">
+	<div class="transparent_box">
+			<div id="start_box">
+				<h1>Hangman</h1>
+				<p>Zasady są proste. Wpisz hasło i pozwól innym graczom je odgadnąć.<br><br>Do dzieła!</p>
+				<div class="inputs">
+					<input class="input" type="text" id="word" name="word" placeholder="wpisz hasło">
+					<input class="button" type="submit" id="submit_button" value="START">
+				</div>
+			</div>
+	</div>
+	<div class="container blur">
 
-		<div id="input_box">
-			<input type="text" id="word" name="word" placeholder="type in your word">
-			<input type="submit" id="submit_button" value="Submit">
-		</div>
 		<div id="answer_box"></div>
 		<div class="row">
-			<div class="gallows">
+			<div class="gallows col">
 				<svg height="300" width="300">
-	  				<line class="base" x1="0" y1="290" x2="100" y2="290" stroke="#000" stroke-width="8" />
+	  				<line class="base" x1="0" y1="290" x2="300" y2="290" stroke="#000" stroke-width="6" />
 	  				<line class="vertical_rod" x1="50" y1="40" x2="50" y2="290" stroke="#000" stroke-width="5" />
+	  				<line class="vertical_rod" x1="60" y1="40" x2="60" y2="290" stroke="#000" stroke-width="5" />
+	  				<line x1="32" y1="40" x2="32" y2="25" stroke="#000" stroke-width="5" />
+	  				<line x1="198" y1="40" x2="198" y2="25" stroke="#000" stroke-width="5" />
 	  				<line class="horizontal_rod" x1="30" y1="40" x2="200" y2="40" stroke="#000" stroke-width="5" />
-	  				<circle data-type="svg_element" class="head display" cx="170" cy="120" r="25" stroke="black" stroke-width="3" fill="none" />
-	  				<line data-type="svg_element" class="core display" x1="170" y1="145" x2="170" y2="210" stroke="#000" stroke-width="3" />
-	  				<line data-type="svg_element" class="leg_right display" x1="170" y1="210" x2="180" y2="265" stroke="#000" stroke-width="3" />
-	  				<line data-type="svg_element" class="leg_left display" x1="170" y1="210" x2="160" y2="265" stroke="#000" stroke-width="3" />
-	  				<line data-type="svg_element" class="arm_right display" x1="170" y1="160" x2="185" y2="215" stroke="#000" stroke-width="3" />
-	  				<line data-type="svg_element" class="arm_left display" x1="170" y1="160" x2="155" y2="215" stroke="#000" stroke-width="3" />
-	  				<line data-type="svg_element" class="rope display" x1="170" y1="40" x2="170" y2="95" stroke="#000" stroke-width="3" />
+	  				<line class="horizontal_rod" x1="30" y1="25" x2="200" y2="25" stroke="#000" stroke-width="5" />	
+	  				<line x1="60" y1="100" x2="100" y2="40" stroke="#000" stroke-width="5" />
+	  				<line x1="60" y1="110" x2="110" y2="40" stroke="#000" stroke-width="5" />
+	  				
+	  				<svg class="face">
+		  				<line x1="170" y1="140" x2="180" y2="130" stroke="#000" stroke-width="2" />
+		  				<line x1="170" y1="130" x2="180" y2="135" stroke="#000" stroke-width="2" />
+
+		  				<line x1="190" y1="135" x2="200" y2="125" stroke="#000" stroke-width="2" />
+		  				<line x1="190" y1="125" x2="200" y2="130" stroke="#000" stroke-width="2" />
+
+		  				<line x1="178" y1="150" x2="195" y2="145" stroke="#000" stroke-width="2" />
+	  				</svg>
+	  				
+	  				<circle class="head display" cx="180" cy="130" r="25" stroke="black" stroke-width="3" fill="none" />
+	  				<line class="core display" x1="170" y1="153" x2="170" y2="210" stroke="#000" stroke-width="3" />
+	  				<line class="leg_right display" x1="170" y1="210" x2="180" y2="265" stroke="#000" stroke-width="3" />
+	  				<line class="leg_left display" x1="170" y1="210" x2="160" y2="265" stroke="#000" stroke-width="3" />
+	  				<line class="arm_right display" x1="170" y1="158" x2="185" y2="215" stroke="#000" stroke-width="3" />
+	  				<line class="arm_left display" x1="170" y1="158" x2="155" y2="215" stroke="#000" stroke-width="3" />
+	  				<line class="rope display" x1="170" y1="40" x2="170" y2="107" stroke="#000" stroke-width="4" />
 				</svg>
 			</div>
-			<div id="letter_box"></div>
+			<div id="letter_box" class="col"></div>
 		</div>
 
 	</div>

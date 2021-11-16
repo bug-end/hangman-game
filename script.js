@@ -1,8 +1,9 @@
 const input = document.getElementById('word');
 const submit = document.getElementById('submit_button');
 const gallows = document.querySelector('.gallows');
-const reset = document.querySelector('.reset_button');
-const inputBox = document.getElementById('input_box');
+const transparentBox = document.querySelector('.transparent_box');
+const blur = document.querySelector('.blur');
+const face = document.querySelector('.face');
 let mistakes = 0;
 let puzzle; // zmienna globalna z wartością przypisywaną po kliknięciu w przycisk submit
 let blanks = '';
@@ -21,7 +22,8 @@ submit.addEventListener('click', function() {
 		}
 	};
 	submit.disabled = true;
-	inputBox.style.display = 'none';
+	transparentBox.style.display = 'none';
+	blur.classList.remove('blur');
 	blanksGenerator()
 })
 
@@ -79,12 +81,14 @@ function checkLetter(nr) {
 
 	// wygrana
 	if (puzzle == blanks) {
-		document.getElementById('letter_box').innerHTML = 'Brawo! Odgadłeś hasło' + '<br><br><span class="reset" onclick="location.reload()">ZAGRAJ JESZCZE RAZ</span>';
+		document.getElementById('letter_box').innerHTML = '<p>Wygrałeś!</p>' + '<p class="reset" onclick="location.reload()">ZAGRAJ JESZCZE RAZ</p>';
 	}
 
 	// przegrana
 	if (mistakes >= 7) {
-		document.getElementById('letter_box').innerHTML = 'Niestesty' + '<br><br><span class="reset" onclick="location.reload()">SPRÓBUJ JESZCZE RAZ</span>';
+
+		face.style.display = 'block';
+		document.getElementById('letter_box').innerHTML = '<p class="reset" onclick="location.reload()">ZAGRAJ JESZCZE RAZ</p>';
 	}
 
 };
