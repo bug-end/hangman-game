@@ -1,12 +1,38 @@
+@media only screen and (max-width: 768px) {
+
+	#answer_box {
+		margin-top: 1rem;
+	}
+
+	#letter_box {
+		margin-bottom: 3rem;
+	}
+
+	.col {
+		flex: 100%;
+	}
+
+	.paper {
+		width: 70%;
+		bottom: -150px;
+	}
+
+}
+
 @media only screen and (max-width: 576px) {
 	#start_box {
-		width: 90vw;
+		width: 80vw;
 		padding-left: 1rem;
 		padding-right: 1rem;
 	}
 
+	#answer_box {
+		margin-top: 2rem;
+	}
+
 	.inputs {
 		flex-wrap: wrap;
+		align-items: flex-start;
 	}
 
 	.input {
@@ -14,7 +40,7 @@
 	}
 
 	.paper {
-		width: auto;
-		height: 100%;
+		width: 100%;
+		bottom: -100px;
 	}
 }

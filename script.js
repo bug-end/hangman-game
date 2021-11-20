@@ -25,6 +25,7 @@ submit.addEventListener('click', function() {
 				blanks = blanks + '-';
 			}
 		};
+		submit.disabled = 'true';
 		transparentBox.style.display = 'none';
 		gallows.classList.remove('display');
 		gallAnimation.classList.add('animate__backInLeft');
@@ -39,6 +40,7 @@ submit.addEventListener('click', function() {
       	};
 });
 
+// funkcja generująca puste pola
 function blanksGenerator() {
 	document.getElementById('answer_box').innerHTML = blanks;
 };

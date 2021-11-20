@@ -5,7 +5,7 @@ body {
 	margin: 0;
 	background-image: radial-gradient( circle 489px at 49.3% 46.6%,  rgba(255,214,126,1) 0%, rgba(253,200,0,1) 100.2% );
 	font-family: 'Roboto Mono', monospace;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 .container {
@@ -37,10 +37,9 @@ body {
 	padding-left: 4rem;
 	padding-right: 4rem;
 	padding-bottom: 2rem;
-	background-image: radial-gradient( circle 489px at 49.3% 46.6%,  rgba(255,214,126,1) 0%, rgba(253,200,0,1) 100.2% );
 	position: absolute;
 	min-height: 250px;
-	max-width: 250px;
+	width: 250px;
 	border: solid 2px #000;
 	z-index: 999;
 	color: #000;
@@ -83,22 +82,18 @@ body {
 	margin-left: 1rem;
 	cursor: pointer;
 	color: #000;
+	background-color: #ebeced;
+}
+
+.button:hover {
+	background-color: #dadbdc;
 }
 
 #answer_box {
 	margin-bottom: 2rem;
 	font-size: 2.5rem;
-	height: 2rem;
 	letter-spacing: 0.5rem;
 	z-index: 10;
-}
-
-#letter_box {
-	display: flex;
-	flex-wrap: wrap;
-	align-content: center;
-	justify-content: center;
-	width: 50vw;
 }
 
 .row {
@@ -110,20 +105,25 @@ body {
 	flex: 50%;
 }
 
+#letter_box {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: center;
+	width: 50vw;
+}
+
 .gallows {
+	position: relative;
 	margin-bottom: 1rem;
 	display: flex;
 	justify-content: center;
 }
 
-.display {
-	display: none;
-}
-
 .paper {
 	position: absolute;
-	top: -10px;
-	width: 50%;
+	bottom: -100px;
+	width: 100%;
 	z-index: -1;
 }
 
@@ -139,17 +139,16 @@ body {
 }
 
 .hover:hover {
-	color: lightgrey;
-	border-color: lightgrey;
+	border-color: #ebeced;
 }
 
 .green {
-	background-color: green;
+	background-color: #018100;
 	cursor: default;
 }
 
 .red {
-	background-color: red;
+	background-color: #ff0200;
 	cursor: default;
 }
 
@@ -157,17 +156,18 @@ body {
 	display: none;
 }
 
-.win {
-	display: none;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: 100;
-	background-color: lightsteelblue;
-}
-
 .reset {
 	cursor: pointer;
 	font-size: 1.5rem;
+	background-color: #fff;
+	padding: 0.5rem 1rem;
+	border: 2px solid #000;
 }
 
+.reset:hover {
+	background-color: #ebeced;
+}
+
+.display {
+	display: none;
+}
