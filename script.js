@@ -8,10 +8,11 @@ const popOver = document.querySelector('.popover');
 const alphabet = 'AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ';
 const letter = alphabet.split('');
 const paper = document.querySelector('.paper');
-let letbox = document.getElementById('letter_box');
+let keyboard = document.getElementById('letters_box');
 let mistakes = 0;
 let puzzle; // zmienna globalna z wartością przypisywaną po kliknięciu w przycisk submit
 let blanks = '';
+let arr = [];
 
 submit.addEventListener('click', function() {
 	puzzle = input.value;
@@ -30,15 +31,29 @@ submit.addEventListener('click', function() {
 		gallows.classList.remove('display');
 		gallAnimation.classList.add('animate__backInLeft');
 		paper.classList.add('animate__rollIn', 'animate__delay-1s');
-		letbox.classList.add('animate__backInRight');
+		keyboard.classList.add('animate__backInRight');
 		blanksGenerator()
 		lettersGenerator()
+		window.addEventListener('keydown', (event) => {
+			let key = event.key.toUpperCase();
+			let regex2 = /^[A-ZĄĆĘŁŃÓŚŹŻ]$/;
+			if (key.match(regex2) && mistakes <= 6 && puzzle != blanks) {
+				checkLetter(key);
+			} else {
+				return false;
+			}
+		});
       } else {
       		popOver.classList.remove('display');
       		setTimeout(function(){ popOver.classList.add('display'); }, 3000);
       		return false;
       	};
 });
+
+keyboard.addEventListener('click', (event) => {
+	if (!event.target.closest('button')) return;
+	checkLetter(event.target.textContent);
+})
 
 // funkcja generująca puste pola
 function blanksGenerator() {
@@ -47,12 +62,11 @@ function blanksGenerator() {
 
 // funkcja generująca klawiaturę
 function lettersGenerator() {
-	let letterbox = '';
+	let lettersBox = '';
 	for (let i = 0; i < letter.length; i++) {
-		let element = 'l' + i;
-		letterbox = letterbox + '<div class="letter hover" onclick="checkLetter(' + i + ')" id="' + element + '" >' +	letter[i] + '</div>';
+		lettersBox = lettersBox + '<button class="letter hover" id="' + letter[i] + '" >' +	letter[i] + '</button>';
 		}
-	letbox.innerHTML = letterbox;
+	keyboard.innerHTML = lettersBox;
 };
 
 // utworzenie metody changeBlank zmieniającej znak pod wskazaną pozycją w stringu
@@ -66,26 +80,30 @@ String.prototype.changeBlank = function(position, sign) {
 
 function checkLetter(nr) {
 	let correct = false;
+	
+	for (let i = 0; i < arr.length; i++) {
+		if (nr == arr[i]) {
+			return;
+		}
+	}
+	arr.push(nr);
 
 	for (let i = 0; i < puzzle.length; i++) {
-		if (puzzle.charAt(i) == letter[nr]) {
-			blanks = blanks.changeBlank(i, letter[nr]);
+		if (puzzle.charAt(i) == nr) {
+			blanks = blanks.changeBlank(i, nr);
 			correct = true;
 		}
 	}
 
 	if (correct == true) {
-		let element = 'l' + nr;
-		let elem2 = document.getElementById(element);
+		let elem2 = document.getElementById(nr);
 		elem2.classList.add('green');
 		elem2.classList.remove('hover');
 		blanksGenerator();
 	} else {
-		let element = 'l' + nr;
-		let elem2 = document.getElementById(element);
+		let elem2 = document.getElementById(nr);
 		elem2.classList.add('red');
 		elem2.classList.remove('hover');
-		elem2.setAttribute('onclick', ';');
 
 		// zła litera
 		mistakes++;
@@ -95,15 +113,14 @@ function checkLetter(nr) {
 
 	// wygrana
 	if (puzzle == blanks) {
-		letbox.innerHTML = '<p class="reset" onclick="location.reload()">WYGRAŁEŚ! TO CO, JESZCZE RAZ?</p>';
+		keyboard.innerHTML = '<p class="reset" onclick="location.reload()">WYGRAŁEŚ! TO CO, JESZCZE RAZ?</p>';
+
 	}
 
 	// przegrana
 	if (mistakes >= 7) {
 		face.style.display = 'block';
-		letbox.innerHTML = '<p class="reset" onclick="location.reload()">GŁOWA DO GÓRY<br>SPRÓBUJ JESZCZE RAZ</p>';
+		keyboard.innerHTML = '<p class="reset" onclick="location.reload()">GŁOWA DO GÓRY<br>SPRÓBUJ JESZCZE RAZ</p>';
 	}
 
 };
-
-
